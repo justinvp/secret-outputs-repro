@@ -17,6 +17,7 @@ resources:
       websiteUrl:
         type: string
         description: The website URL.
+        secret: true
     required:
       - bucket
       - websiteUrl

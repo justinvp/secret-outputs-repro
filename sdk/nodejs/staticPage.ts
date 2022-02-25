@@ -52,6 +52,8 @@ export class StaticPage extends pulumi.ComponentResource {
             resourceInputs["websiteUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["websiteUrl"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(StaticPage.__pulumiType, name, resourceInputs, opts, true /*remote*/);
     }
 }

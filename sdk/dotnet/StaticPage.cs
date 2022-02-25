@@ -42,6 +42,10 @@ namespace Pulumi.Xyz
             var defaultOptions = new ComponentResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "websiteUrl",
+                },
             };
             var merged = ComponentResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -31,6 +31,13 @@ func NewStaticPage(ctx *pulumi.Context,
 	if args.IndexContent == nil {
 		return nil, errors.New("invalid value for required argument 'IndexContent'")
 	}
+	if args.WebsiteUrl != nil {
+		args.WebsiteUrl = pulumi.ToSecret(args.WebsiteUrl).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"websiteUrl",
+	})
+	opts = append(opts, secrets)
 	var resource StaticPage
 	err := ctx.RegisterRemoteComponentResource("xyz:index:StaticPage", name, args, &resource, opts...)
 	if err != nil {

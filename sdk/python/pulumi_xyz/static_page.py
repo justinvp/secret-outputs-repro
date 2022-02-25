@@ -90,6 +90,8 @@ class StaticPage(pulumi.ComponentResource):
             __props__.__dict__["index_content"] = index_content
             __props__.__dict__["bucket"] = None
             __props__.__dict__["website_url"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["websiteUrl"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(StaticPage, __self__).__init__(
             'xyz:index:StaticPage',
             resource_name,
